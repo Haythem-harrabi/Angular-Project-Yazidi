@@ -1,0 +1,23 @@
+<p>home works!</p>
+
+<tr><th>ID</th><th>TITLE</th><th>ACTIONS</th></tr>
+<tr *ngFor="let product of products , let i = index"> <td>{{product.id}}</td> <td>{{product.title}}</td> <td>{{product.price}}</td> <td>{{product.quantity}}</td> 
+    <td><button >like</button> <button (click)="Buy(i)" [disabled]="product.quantity == 0">Buy</button></td>
+</tr>
+<button (click)="show()">hello</button>
+
+<input type="text" [(ngModel)]="color"/>
+<p [style.background-color]="color"> SALEMOU 3ALAYKOM</p>
+
+
+<div class="row">
+    <div *ngFor="let p of products" class="card" style="width: 18rem;">
+        <img class="card-img-top" style="height: 250px; width : 250px;" src="{{p.image}}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">title : {{p.title }}</h5>
+            <p class="card-text">Price : {{p.price}}</p>
+            <p class="card-text">Quantity : {{p.quantity}}</p>
+            </div>
+        </div>
+    </div>
+  

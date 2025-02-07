@@ -1,0 +1,33 @@
+<p>residences-component works!</p>
+
+<div class="row">
+    <input type="text" [(ngModel)]="searchInput" (input)="search()" >
+    <!--<div *ngFor="let p of listResidences ; let i = index" class="card" style="width: 18rem;">
+        <img class="card-img-top" style="height: 250px; width : 250px;" src="{{p.image}}" alt="Card image cap">
+        <div class="card-body">
+            <h2 class="card-title">Name : {{p.name }}</h2>
+            <p class="card-text" [ngClass]="{'bg-success': p.status === 'Disponible' , 'bg-danger': p.status === 'Vendu', 'Construction-class': p.status === 'En Construction'}">Status : {{p.status}}</p>
+            <div>
+            <span *ngIf="p.status=='Disponible'"> Résidence disponible mar7be bikom </span>
+            <span *ngIf="p.status=='En Construction'"> Mazelt nebni</span>
+            <span *ngIf="p.status=='Vendu'"> Be3 w rawa7</span>
+             </div>
+            <button (click)="ShowAddress(p)">Show Location</button>
+            <button (click)="AddFavorite(i)" id="Likebtn">Like 👍​</button>
+            </div>
+        </div> -->
+        <div *ngFor="let p of Filtered ; let i = index" class="card" style="width: 18rem;">
+            <img class="card-img-top" style="height: 250px; width : 250px;" src="{{p.image}}" alt="Card image cap">
+            <div class="card-body">
+                <h2 class="card-title">Name : {{p.name }}</h2>
+                <p class="card-text" [ngClass]="{'bg-success': p.status === 'Disponible' , 'bg-danger': p.status === 'Vendu', 'Construction-class': p.status === 'En Construction'}">Status : {{p.status}}</p>
+                <div>
+                <span *ngIf="p.status=='Disponible'"> Résidence disponible mar7be bikom </span>
+                <span *ngIf="p.status=='En Construction'"> Mazelt nebni</span>
+                <span *ngIf="p.status=='Vendu'"> Be3 w rawa7</span>
+                 </div>
+                <button (click)="ShowAddress(p)">Show Location</button>
+                <button (click)="AddFavorite(i)" id="Likebtn">Like 👍​</button>
+                </div>
+            </div>
+    </div>

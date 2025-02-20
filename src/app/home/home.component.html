@@ -17,6 +17,7 @@
             <h5 class="card-title">title : {{p.title }}</h5>
             <p class="card-text">Price : {{p.price}}</p>
             <p class="card-text">Quantity : {{p.quantity}}</p>
+            <button [routerLink]="['/details', p.id]">Details</button>
             </div>
         </div>
     </div>

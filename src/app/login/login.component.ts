@@ -13,7 +13,9 @@ export class LoginComponent {
   }
 login = new FormGroup({
   email: new FormControl("haythem" ,[Validators.required, Validators.minLength(4)]),
-  pwd :new FormControl("", Validators.required)
+  pwd :new FormControl("", [Validators.required, Validators.minLength(8)]),
+  tel : new FormControl("", [Validators.required,Validators.minLength(8),Validators.maxLength(8)]),
+  cin: new FormControl("", [Validators.required,Validators.minLength(8),Validators.maxLength(8)]),
 }
 
 );

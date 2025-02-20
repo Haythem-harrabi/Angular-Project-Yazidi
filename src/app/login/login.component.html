@@ -1,14 +1,64 @@
-<p>login works!</p>
+<p>Login works!</p>
 
-<form (ngSubmit)="Verify()" [formGroup]="login">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1"  formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<form (ngSubmit)="Verify()" [formGroup]="login" class="mt-5">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input 
+      type="email" 
+      class="form-control" 
+      id="exampleInputEmail1" 
+      formControlName="email" 
+      aria-describedby="emailHelp" 
+      placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    
+    <div *ngIf="login.controls.email.touched" class="alert alert-danger mt-2">
+     <p *ngIf="login.controls.email.hasError('required')"> Email is mandatory</p>
+     <p *ngIf="login.controls.email.hasError('minlength')">Email must be at least 4 characters</p>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1"  formControlName="pwd" placeholder="Password">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input 
+      type="password" 
+      class="form-control" 
+      id="exampleInputPassword1"  
+      formControlName="pwd" 
+      placeholder="Password">
+    
+    <div *ngIf="login.controls.pwd.invalid && login.controls.pwd.touched" class="alert alert-danger mt-2">
+      Password is required.
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="login.invalid ">Submit</button>
-  </form>
+  </div>
+
+  <div class="form-group">
+    <label for="cin">CIN</label>
+    <input 
+      type="text" 
+      class="form-control" 
+      id="cin"  
+      formControlName="cin" 
+      placeholder="CIN HERE">
+    
+    <div *ngIf="login.controls.cin.invalid && login.controls.cin.touched" class="alert alert-danger mt-2">
+      CIN is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tel">Tel</label>
+    <input 
+      type="text" 
+      class="form-control" 
+      id="tel"  
+      formControlName="tel" 
+      placeholder="Tel HERE">
+    
+    <div *ngIf="login.controls.tel.invalid && login.controls.tel.touched" class="alert alert-danger mt-2">
+      Phone number is required.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="login.invalid">Submit</button>
+</form>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-details',
@@ -11,10 +12,12 @@ import { HomeComponent } from '../home/home.component';
 export class DetailsComponent {
 
   id : number | undefined;
-  constructor(private ActivatedRoute : ActivatedRoute ){}
+  product : any;
+  constructor(private ActivatedRoute : ActivatedRoute, private ps : ProductService ){}
 
   ngOnInit(){
-    this.id = this.ActivatedRoute.snapshot.params['id']
+    this.id = this.ActivatedRoute.snapshot.params['id'];
+    this.product = this.ps.products.find((p:any)=>p.id==this.id);
   }
   
 }

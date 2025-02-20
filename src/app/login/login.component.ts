@@ -19,6 +19,8 @@ login = new FormGroup({
 );
 
   Verify(){
+    console.log("form submitted");
+    console.log(this.login.value);
     
   }
 }

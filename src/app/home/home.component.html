@@ -1,24 +1,51 @@
-<p>home works!</p>
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Home Works!</h2>
 
-<tr><th>ID</th><th>TITLE</th><th>ACTIONS</th></tr>
-<tr *ngFor="let product of products , let i = index"> <td>{{product.id}}</td> <td>{{product.title}}</td> <td>{{product.price}}</td> <td>{{product.quantity}}</td> 
-    <td><button >like</button> <button (click)="Buy(i)" [disabled]="product.quantity == 0">Buy</button></td>
-</tr>
-<button (click)="show()">hello</button>
+    <table class="table table-bordered table-hover mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products , let i = index">
+                <td>{{product.id}}</td>
+                <td>{{product.title}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.quantity}}</td>
+                <td>
+                    <button class="btn btn-outline-primary btn-sm">Like</button>
+                    <button class="btn btn-success btn-sm" (click)="Buy(i)" [disabled]="product.quantity == 0">Buy</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-<input type="text" [(ngModel)]="color"/>
-<p [style.background-color]="color"> SALEMOU 3ALAYKOM</p>
+    <button class="btn btn-info mt-3" (click)="show()">Hello</button>
 
+    <div class="mt-4">
+        <label for="colorInput" class="form-label">Choose a color:</label>
+        <input type="text" id="colorInput" class="form-control w-50" [(ngModel)]="color"/>
+        <p class="text-white p-2 mt-2 rounded" [style.background-color]="color">SALEMOU 3ALAYKOM</p>
+    </div>
 
-<div class="row">
-    <div *ngFor="let p of products" class="card" style="width: 18rem;">
-        <img class="card-img-top" style="height: 250px; width : 250px;" src="{{p.image}}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">title : {{p.title }}</h5>
-            <p class="card-text">Price : {{p.price}}</p>
-            <p class="card-text">Quantity : {{p.quantity}}</p>
-            <button [routerLink]="['/details', p.id]">Details</button>
+    <div class="row mt-4">
+        <div *ngFor="let p of products" class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" style="height: 250px; object-fit: cover;" src="{{p.image}}" alt="Product image">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Title: {{p.title}}</h5>
+                    <p class="card-text fw-bold">Price: {{p.price}} $</p>
+                    <p class="card-text text-muted">Quantity: {{p.quantity}}</p>
+                    <button class="btn btn-outline-secondary w-100" [routerLink]="['/details', p.id]">Details</button>
+                    <button class="btn btn-outline-secondary w-100" [routerLink]="['/addproduct', p.id]">Update</button>
+                    <button class="btn btn-outline-secondary w-100" (click)="DeleteProduct(p.id)">Delete</button>
+                </div>
             </div>
         </div>
     </div>
-  
+</div>

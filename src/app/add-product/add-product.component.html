@@ -4,15 +4,14 @@
 
 
 
-<form (ngSubmit)="save()"  >
+<form (ngSubmit)="save()" [formGroup]="ProductForm" >
   <div class="form-group">
     <label for="exampleInputEmail1">Title</label>
     <input 
       type="text" 
       class="form-control" 
       id="exampleInputEmail1" 
-      
-      name="title"
+      formControlName="title"
       aria-describedby="emailHelp" 
       placeholder="Enter title">
     
@@ -24,8 +23,7 @@
       type="text" 
       class="form-control" 
       id="exampleInputEmail1" 
-      
-      name="price"
+      formControlName="price"
       placeholder="Enter price">
     
   </div>
@@ -36,8 +34,8 @@
       type="text" 
       class="form-control" 
       id="exampleInputEmail1" 
+      formControlName="quantity"
       
-        name="quantity"
       placeholder="Enter quantity">
     
   </div>

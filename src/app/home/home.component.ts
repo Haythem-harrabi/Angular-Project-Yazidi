@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,21 @@ export class HomeComponent {
    constructor(private ps: ProductService) {
     
   }
-  ngOnInit(){
-    this.products = this.ps.products
-  }
+     ngOnInit(){
+      this.ps.getProducts().subscribe((data)=>this.products
+      = data)
+     }
   show(){
      alert("hello")
   } 
   Buy( i : any){
     this.products[i].quantity-=1
 
+  }
+
+  DeleteProduct(id : number){
+this.ps.DeleteProduct(id).subscribe(
+  ()=> this.ngOnInit()
+)
   }
 }
